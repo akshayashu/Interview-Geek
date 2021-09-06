@@ -24,6 +24,22 @@
 .App-link {
   color: #61dafb;
 }
+.App{
+  display: flex;
+}
+
+.container{
+  background-color: #61dafb;
+  float: left;
+  width: 50%;
+  height: 100%;
+}
+.editor{
+  background-color: #6a6c6e;
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+}
 
 @keyframes App-logo-spin {
   from {
