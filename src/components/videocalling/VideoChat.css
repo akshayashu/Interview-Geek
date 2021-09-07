@@ -1,0 +1,17 @@
+.container{
+    display: flex;
+    justify-content: center;
+}
+.primary-video{
+    width: 200px;
+    height: 200px;
+    margin: 16px;
+    object-fit: cover;
+  }
+  
+  .secondary-video{
+    height: 200px;
+    width: 200px;
+    margin: 16px;
+    border-radius: 16px;
+  }

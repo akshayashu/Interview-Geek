@@ -1,6 +1,7 @@
 import './App.css';
-import React from 'react';
+import React, {useState} from 'react';
 import Editor from './components/editor/Editor';
+import VideoChat from './components/videocalling/VideoChat';
 
 function App() {
 
@@ -14,8 +15,7 @@ function App() {
       {/* main content */}
       <div className="App">
         <div className="left-side">
-          <h1>Online Code Compiler</h1>
-          <br></br>
+          <VideoChat></VideoChat>
         </div>
         <div className="right-side">
           <Editor className="editor"></Editor>

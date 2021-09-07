@@ -10,12 +10,14 @@
 .title{
   width: 100vw;
   padding: 5px;
-  height: 5vh;
-  background-color: #00BFA5;
+  height: 7vh;
+  background-image: linear-gradient(to right, #EAE7DC, #EAE7DC)
 }
 
 .title-name{
   font-size: 24px;
+  margin: 10px;
+  color: #E85A4F;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
@@ -24,16 +26,14 @@
 }
 
 .left-side{
-  background: #1DE9B6;
+  background: whitesmoke;
   width: 50%;
-  height: 95vh;
+  height: 93vh;
 }
 
 .right-side{
   width: 50%;
-  height: 95vh;
+  height: 93vh;
   /* background-color: #A7FFEB; */
 }
 
-.editor{
-}

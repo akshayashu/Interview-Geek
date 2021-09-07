@@ -4,7 +4,8 @@ import axios from 'axios';
 import stubs from './../../defaultStubs';
 import moment from 'moment';
 import AceEditor from 'react-ace';
-import { FormControl, makeStyles, InputLabel, Select, MenuItem, Button } from '@material-ui/core';
+import { FormControl, makeStyles, TextField, InputLabel, Select, MenuItem, Button } from '@material-ui/core';
+import PlayArrowIcon from '@material-ui/icons/PlayArrow'
 
 // language
 import "ace-builds/src-noconflict/mode-c_cpp";
@@ -20,6 +21,44 @@ import "ace-builds/src-noconflict/theme-textmate";
 import "ace-builds/src-noconflict/theme-terminal";
 import "ace-builds/src-noconflict/theme-solarized_dark";
 import "ace-builds/src-noconflict/theme-solarized_light";
+
+const useStyles = makeStyles({
+    root: {
+        width: 150,
+        "& .MuiOutlinedInput-input": {
+            color: "#8E8D8A"
+        },
+        "& .MuiInputLabel-root": {
+            color: "#8E8D8A"
+        },
+        "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#8E8D8A"
+        },
+        "&:hover .MuiOutlinedInput-input": {
+            color: "#E98074"
+        },
+        "&:hover .MuiInputLabel-root": {
+            color: "#E98074"
+        },
+        "&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#E98074"
+        },
+        "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-input": {
+            color: "#D8C3A5"
+        },
+        "& .MuiInputLabel-root.Mui-focused": {
+            color: "#D8C3A5"
+        },
+        "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#D8C3A5"
+        }
+    },
+    resize: {
+        height: 10,
+        fontSize: 14
+    }
+});
+
 
 function Editor() {
 
@@ -132,58 +171,70 @@ function Editor() {
         }
     }
 
+    const classes = useStyles();
+
     return (
         <div className="editor">
             <div className="lang-theme">
+                <TextField
+                    className={classes.root}
+                    value={theme}
+                    onChange={e => setTheme(e.target.value)}
+                    variant="outlined"
+                    label="Themes"
+                    InputProps={{
+                        classes: {
+                            input: classes.resize,
+                        },
+                    }}
+                    select
+                >
+                    <MenuItem value="github">Github</MenuItem>
+                    <MenuItem value="kuroir">Kuroir</MenuItem>
+                    <MenuItem value="monokai">Monokai</MenuItem>
+                    <MenuItem value="solarized_dark">Solarized dark</MenuItem>
+                    <MenuItem value="solarized_light">Solarized light</MenuItem>
+                    <MenuItem value="textmate">Textmate</MenuItem>
+                    <MenuItem value="terminal">Terminal</MenuItem>
+                    <MenuItem value="tomorrow">Tomorrow</MenuItem>
+                    <MenuItem value="twilight">Twilight</MenuItem>
+                    <MenuItem value="xcode">XCode</MenuItem>
+                </TextField>
+                <TextField
+                    className={classes.root}
+                    value={language}
+                    InputProps={{
+                        classes: {
+                            input: classes.resize,
+                        },
+                    }}
+                    onChange={(e) => {
+                        let response = window.confirm(
+                            "WARNING: If you switch the language, your code will be reset!"
+                        );
+                        if (response) {
+                            setlanguage(e.target.value);
+                        }
+                    }}
+                    variant="outlined"
+                    label="Language"
+                    select
+                >
+                    <MenuItem value="cpp">C++</MenuItem>
+                    <MenuItem value="py">Python</MenuItem>
+                </TextField>
 
-                <FormControl sx={{ m: 1, minWidth: 150 }}>
-                    <InputLabel>Language</InputLabel>
-                    <Select
-                        value={language}
-                        onChange={(e) => {
-                            let response = window.confirm(
-                                "WARNING: If you switch the language, your code will be reset!"
-                            );
-                            if (response) {
-                                setlanguage(e.target.value);
-                            }
-                        }
-                        }
-                    >
-                        <MenuItem value="cpp">C++</MenuItem>
-                        <MenuItem value="py">Python</MenuItem>
-                    </Select>
-                </FormControl>
-                <br />
-                <FormControl sx={{ m: 1, minWidth: 150 }}>
-                    <InputLabel>Theme</InputLabel>
-                    <Select
-                        value={theme}
-                        onChange={(e) => {
-                            setTheme(e.target.value)
-                        }}
-                    >
-                        <MenuItem value="github">Github</MenuItem>
-                        <MenuItem value="kuroir">Kuroir</MenuItem>
-                        <MenuItem value="monokai">Monokai</MenuItem>
-                        <MenuItem value="solarized_dark">Solarized dark</MenuItem>
-                        <MenuItem value="solarized_light">Solarized light</MenuItem>
-                        <MenuItem value="textmate">Textmate</MenuItem>
-                        <MenuItem value="terminal">Terminal</MenuItem>
-                        <MenuItem value="tomorrow">Tomorrow</MenuItem>
-                        <MenuItem value="twilight">Twilight</MenuItem>
-                        <MenuItem value="xcode">XCode</MenuItem>
-                    </Select>
-                </FormControl>
                 <Button
-                variant="outlined"
+                    size="medium"
+                    variant="outlined"
                     onClick={setDefaultLanguauge}
                 >Set default</Button>
             </div>
-            <br></br>
             <AceEditor
+                className="main-editor"
                 width="50vw"
-                fontSize="16px"
+                height="70vh"
+                fontSize="18px"
                 mode={language === "py" ? "python" : "c_cpp"}
                 theme={theme}
                 value={code}
@@ -199,7 +250,12 @@ function Editor() {
                 }}
             />
 
-            <button onClick={handleSubmit}>Submit</button>
+            <Button
+                onClick={handleSubmit}
+                variant="contained"
+                endIcon={<PlayArrowIcon />}
+                style={{backgroundColor: '#1DE9B6', color: '#FFFFFF'}}
+            >Submit</Button>
             <p>{status}</p>
             <p>{jobId && `JobID: ${jobId}`}</p>
             <p>{renderTimeDetails()}</p>
