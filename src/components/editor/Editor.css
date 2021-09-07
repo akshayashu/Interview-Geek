@@ -1,7 +1,14 @@
-.editor{
-    justify-content: start;
+*{
+    font-size: 16px;
 }
 
-.main-editor{
-    position: relative;
+.lang-theme{
+    display: flex;
+    justify-content: space-around;
+    padding: 5px;
 }
+
+.lang-theme Button {
+    margin-left: 10px;
+}
+

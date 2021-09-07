@@ -1,9 +1,10 @@
-import './Editor.css'
+import '../editor/Editor.css'
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import stubs from './../../defaultStubs';
 import moment from 'moment';
 import AceEditor from 'react-ace';
+import { FormControl, makeStyles, InputLabel, Select, MenuItem, Button } from '@material-ui/core';
 
 // language
 import "ace-builds/src-noconflict/mode-c_cpp";
@@ -19,7 +20,6 @@ import "ace-builds/src-noconflict/theme-textmate";
 import "ace-builds/src-noconflict/theme-terminal";
 import "ace-builds/src-noconflict/theme-solarized_dark";
 import "ace-builds/src-noconflict/theme-solarized_light";
-
 
 function Editor() {
 
@@ -134,53 +134,55 @@ function Editor() {
 
     return (
         <div className="editor">
-            <div className="language-selector">
-                <label>Language: </label>
-                <select
-                    value={language}
-                    onChange={(e) => {
-                        let response = window.confirm(
-                            "WARNING: If you switch the language, your code will be reset!"
-                        );
-                        if (response) {
-                            setlanguage(e.target.value);
+            <div className="lang-theme">
+
+                <FormControl sx={{ m: 1, minWidth: 150 }}>
+                    <InputLabel>Language</InputLabel>
+                    <Select
+                        value={language}
+                        onChange={(e) => {
+                            let response = window.confirm(
+                                "WARNING: If you switch the language, your code will be reset!"
+                            );
+                            if (response) {
+                                setlanguage(e.target.value);
+                            }
                         }
-                    }
-                    }
-                >
-                    <option value="cpp">C++</option>
-                    <option value="py">Python</option>
-                </select>
+                        }
+                    >
+                        <MenuItem value="cpp">C++</MenuItem>
+                        <MenuItem value="py">Python</MenuItem>
+                    </Select>
+                </FormControl>
+                <br />
+                <FormControl sx={{ m: 1, minWidth: 150 }}>
+                    <InputLabel>Theme</InputLabel>
+                    <Select
+                        value={theme}
+                        onChange={(e) => {
+                            setTheme(e.target.value)
+                        }}
+                    >
+                        <MenuItem value="github">Github</MenuItem>
+                        <MenuItem value="kuroir">Kuroir</MenuItem>
+                        <MenuItem value="monokai">Monokai</MenuItem>
+                        <MenuItem value="solarized_dark">Solarized dark</MenuItem>
+                        <MenuItem value="solarized_light">Solarized light</MenuItem>
+                        <MenuItem value="textmate">Textmate</MenuItem>
+                        <MenuItem value="terminal">Terminal</MenuItem>
+                        <MenuItem value="tomorrow">Tomorrow</MenuItem>
+                        <MenuItem value="twilight">Twilight</MenuItem>
+                        <MenuItem value="xcode">XCode</MenuItem>
+                    </Select>
+                </FormControl>
+                <Button
+                variant="outlined"
+                    onClick={setDefaultLanguauge}
+                >Set default</Button>
             </div>
-            <br />
-            <div>
-                <label>Theme: </label>
-                <select
-                    value={theme}
-                    onChange={(e) => {
-                        setTheme(e.target.value)
-                    }}
-                >
-                    <option value="github">Github</option>
-                    <option value="kuroir">Kuroir</option>
-                    <option value="monokai">Monokai</option>
-                    <option value="solarized_dark">Solarized dark</option>
-                    <option value="solarized_light">Solarized light</option>
-                    <option value="textmate">Textmate</option>
-                    <option value="terminal">Terminal</option>
-                    <option value="tomorrow">Tomorrow</option>
-                    <option value="twilight">Twilight</option>
-                    <option value="xcode">XCode</option>
-                </select>
-            </div>
-            <br />
-            <div>
-                <button onClick={setDefaultLanguauge}>Set default</button>
-            </div>
-            <br />
             <br></br>
             <AceEditor
-                className='main-editor'
+                width="50vw"
                 fontSize="16px"
                 mode={language === "py" ? "python" : "c_cpp"}
                 theme={theme}
@@ -196,6 +198,7 @@ function Editor() {
                     setCode(e)
                 }}
             />
+
             <button onClick={handleSubmit}>Submit</button>
             <p>{status}</p>
             <p>{jobId && `JobID: ${jobId}`}</p>
