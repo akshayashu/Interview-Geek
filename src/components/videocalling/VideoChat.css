@@ -3,15 +3,27 @@
     justify-content: center;
 }
 .primary-video{
-    width: 200px;
-    height: 200px;
+    width: 40%;
+    height: auto;
     margin: 16px;
+    border-radius: 16px;
     object-fit: cover;
   }
   
   .secondary-video{
-    height: 200px;
-    width: 200px;
+    width: 40%;
+    height: auto;
     margin: 16px;
     border-radius: 16px;
+    object-fit: cover;
+  }
+
+  .input-id{
+    width: 300px;
+    padding: 5px;
+    margin: 10px;
+  }
+
+  .toggle-btn{
+    margin: 10px;
   }
