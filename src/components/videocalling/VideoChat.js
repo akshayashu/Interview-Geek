@@ -3,13 +3,6 @@ import React, { useState, useEffect, useRef } from "react";
 import Peer from 'peerjs';
 import { Button, makeStyles } from '@material-ui/core';
 
-
-const useStyles = makeStyles({
-    Button: {
-        margin: 10
-    }
-});
-
 let constraints = {
     video: true,
     audio: true
@@ -48,7 +41,14 @@ function VideoChat() {
     }
 
     useEffect(() => {
-        const peer = new Peer();
+        const peer = new Peer(Math.floor(Math.random() * 100), {
+            host: 'localhost',
+            path: '/peerjs',
+            // secure: true, 
+            // secure should be false when we are running it on localhost
+            // since localhost is not secure, only when we deploy, we turn it true
+            port: 5000,
+        });
         console.log(peer);
 
         peer.on('open', (id) => {
@@ -68,6 +68,7 @@ function VideoChat() {
                 console.log("Someone is calling " + call);
                 call.answer(stream)
                 call.on('stream', (remoteStr) => {
+                    console.log(remoteStr);
                     let remoteVideo = remoteRef.current;
                     setRemoteStream(remoteStr);
                     remoteVideo.srcObject = remoteStr;
@@ -97,8 +98,6 @@ function VideoChat() {
         })
     }
 
-    const classes = useStyles();
-
     return (
         <div>
             <div className="container" >
@@ -127,11 +126,6 @@ function VideoChat() {
                 }}>Toggle video</Button>
 
             <Button
-                InputProps={{
-                    classes: {
-                        input: classes.Button,
-                    },
-                }}
                 variant="contained"
                 margin="10"
                 onClick={() => {
