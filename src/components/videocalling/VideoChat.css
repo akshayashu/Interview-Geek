@@ -10,20 +10,27 @@
     object-fit: cover;
   }
   
-  .secondary-video{
-    width: 40%;
-    height: auto;
-    margin: 16px;
-    border-radius: 16px;
-    object-fit: cover;
-  }
+.secondary-video{
+  width: 40%;
+  height: auto;
+  margin: 16px;
+  border-radius: 16px;
+  object-fit: cover;
+}
 
-  .input-id{
-    width: 300px;
-    padding: 5px;
-    margin: 10px;
-  }
+.input-id{
+  width: 300px;
+  padding: 5px;
+  margin: 10px;
+}
 
-  .toggle-btn{
-    margin: 10px;
-  }
+.screen-video{
+  width: 100%;
+  height: auto;
+  margin: 10px;
+  max-height: 500px
+}
+
+.toggle-btn{
+  margin: 10px;
+}

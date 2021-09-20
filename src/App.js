@@ -24,11 +24,6 @@ function App() {
       <div className="App">
         <div className="left-side">
           <VideoChat></VideoChat>
-          <VideoChat></VideoChat>
-          <VideoChat></VideoChat>
-          <VideoChat></VideoChat>
-          <VideoChat></VideoChat>
-          <VideoChat></VideoChat>
         </div>
         <div className="divider"></div>
         <div className="right-side">
