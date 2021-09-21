@@ -6,7 +6,7 @@
 
 }
 .header{
-  background-color: whitesmoke;
+  background: white;
   height: 100%;
 }
 
@@ -58,7 +58,7 @@
 }
 
 .left-side{
-  /* background: whitesmoke; */
+  background-color: whitesmoke;
   width: 49%;
   height: 100%;
   overflow: scroll;
@@ -75,6 +75,6 @@
   right: 0;
   width: 50%;
   height: 93vh;
-  /* background-color: #A7FFEB; */
+  background-color: #A7FFEB;
 }
 
