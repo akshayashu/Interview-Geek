@@ -1,7 +1,7 @@
-import '../editor/Editor.css'
+import './Editor.css'
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
-import stubs from './../../defaultStubs';
+import stubs from '../../../defaultStubs';
 import moment from 'moment';
 import AceEditor from 'react-ace';
 import { FormControl, makeStyles, TextField, InputLabel, Select, MenuItem, Button } from '@material-ui/core';
