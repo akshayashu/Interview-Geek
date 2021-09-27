@@ -2,11 +2,17 @@ import './HomePage.css';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from '../../assets/boy-laptop.png'
+import handshake from '../../assets/handshake.png'
+import twitter from '../../assets/twitter.png'
+import fb from '../../assets/facebook.png'
+import insta from '../../assets/instagram.png'
+import linkedin from '../../assets/linkedin.png'
 
 function HomePage() {
     return (
         <div className="home-container">
             <div className="home-top-container">
+                {/* header */}
                 <div className="home-header">
                     <h1 className="home-logo">Interview Geek</h1>
                     <ul className="home-page-route">
@@ -19,23 +25,112 @@ function HomePage() {
                         <li><a>login</a></li>
                     </ul>
                 </div>
-                <div className="home-section1">
+
+                <div className="home-introduction">
                     <div className="home-intro">
                         <h2>Interview Geek</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                            et dolore magna aliqua.
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        <p>
+                            Interview Geek is the #1 rated technical recruitment platform for teams to test
+                            the coding skills of developers and make evidence-based hiring decisions.
+                            We can help you conduct coding interviews and test programming skills
+                            of developers at scale – turning a challenge into one of your greatest opportunities.
                         </p>
                         <a>Get started</a>
                     </div>
                     <div className="home-logo-img">
-                        <img 
-                        src={logo}></img>
+                        <img
+                            src={logo}></img>
                     </div>
                 </div>
 
+                <div className="home-services">
+                    <h1>Services</h1>
+                    <div className="home-services-wrapper">
+                        <div className="home-services-code-editor">
+                            <h2>Code Editor</h2>
+                            <p>
+                                Something will come here
+                            </p>
+                            <div className="home-logo-img">
+                                <img
+                                    src={logo}></img>
+                            </div>
+                            <a>Get started</a>
+                        </div>
+                        <div className="home-services-code-editor">
+                            <h2>Interview Geek</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                                et dolore magna aliqua.
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <div className="home-logo-img">
+                                <img
+                                    src={logo}></img>
+                            </div>
+                            <a>Get started</a>
+                        </div>
+                        <div className="home-services-code-editor">
+                            <h2>Interview Geek</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                                et dolore magna aliqua.
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <div className="home-logo-img">
+                                <img
+                                    src={logo}></img>
+                            </div>
+                            <a>Get started</a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                {/* footer */}
+                <div className="home-footer">
+                    <div className="home-footer-content">
+                        <div className="home-footer-links">
+                            <h2>Interview Geek</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                                et dolore magna aliqua.
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            </p>
+                            <h3>Connect with us</h3>
+                            <div className="home-footer-social">
+                                <a href={'https://www.instagram.com/akshay_khanna08/'}>
+                                    <div className="home-footter-img-wrapper">
+                                        <img src={insta}></img>
+                                    </div>
+                                </a>
+                                <a href={'https://www.facebook.com/akshay.khanna.9231/'}>
+                                    <div className="home-footter-img-wrapper">
+                                        <img src={fb}></img>
+                                    </div>
+                                </a>
+                                <a href={'https://twitter.com/AkshayK10904164'}>
+                                    <div className="home-footter-img-wrapper">
+                                        <img src={twitter}></img>
+                                    </div>
+                                </a>
+                                <a href={'https://www.linkedin.com/in/akshay-khanna-972280193/'}>
+                                    <div className="home-footter-img-wrapper">
+                                        <img src={linkedin}></img>
+                                    </div>
+                                </a>
+                            </div>
+
+                        </div>
+                        <div className="home-footer-logo">
+                            <img
+                                src={handshake}></img>
+                        </div>
+                    </div>
+                    <p>© 2021 Copyright : Interview Geek</p>
+                </div>
 
 
             </div>
