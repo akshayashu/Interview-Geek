@@ -1,12 +1,15 @@
 import './HomePage.css';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import logo from '../../assets/boy-laptop.png'
-import handshake from '../../assets/handshake.png'
-import twitter from '../../assets/twitter.png'
-import fb from '../../assets/facebook.png'
-import insta from '../../assets/instagram.png'
-import linkedin from '../../assets/linkedin.png'
+import logo from '../../assets/boy-laptop.png';
+import handshake from '../../assets/handshake.png';
+import twitter from '../../assets/twitter.png';
+import fb from '../../assets/facebook.png';
+import insta from '../../assets/instagram.png';
+import linkedin from '../../assets/linkedin.png';
+import codeEditor from '../../assets/hand-pencil.png';
+import interview from '../../assets/girl-desk-laptop.png';
+import screenShare from '../../assets/man-sitting-laptop.png';
 
 function HomePage() {
     return (
@@ -48,42 +51,30 @@ function HomePage() {
                     <div className="home-services-wrapper">
                         <div className="home-services-code-editor">
                             <h2>Code Editor</h2>
-                            <p>
-                                Something will come here
-                            </p>
-                            <div className="home-logo-img">
-                                <img
-                                    src={logo}></img>
-                            </div>
-                            <a>Get started</a>
+                            <p>✔ Eat. Sleep. Code. Repeat. Be a proper geek</p>
+                            <p>✔ You can code in C++, Java and Python.</p>
+                            <p>✔ Accurate execution report.</p>
+                            <a>Know more</a>
+                            <img className="home-service-img"
+                                src={codeEditor}></img>
                         </div>
-                        <div className="home-services-code-editor">
-                            <h2>Interview Geek</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                                et dolore magna aliqua.
-                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                            </p>
-                            <div className="home-logo-img">
-                                <img
-                                    src={logo}></img>
-                            </div>
+                        <div className="home-services-face-time">
+                            <h2>Interview</h2>
+                            <p>✔ Take or give interview at anytime and anywhere</p>
+                            <p>✔ Video calling is there to make your conversation beautiful</p>
+                            <p>✔ Something will come here</p>
                             <a>Get started</a>
+                            <img className="home-service-img"
+                                src={interview}></img>
                         </div>
-                        <div className="home-services-code-editor">
-                            <h2>Interview Geek</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                                et dolore magna aliqua.
-                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                            </p>
-                            <div className="home-logo-img">
-                                <img
-                                    src={logo}></img>
-                            </div>
+                        <div className="home-services-screen-share">
+                            <h2>Screen Share</h2>
+                            <p>✔ Interviewer can also watch interviewee activities</p>
+                            <p>✔ Flag will be raised if interviewee tries to switch</p>
+                            <p>✔ Honest tests, honest results</p>
                             <a>Get started</a>
+                            <img className="home-service-img"
+                                src={screenShare}></img>
                         </div>
 
                     </div>
