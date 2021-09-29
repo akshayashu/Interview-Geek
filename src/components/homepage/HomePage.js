@@ -19,13 +19,10 @@ function HomePage() {
                 <div className="home-header">
                     <h1 className="home-logo">Interview Geek</h1>
                     <ul className="home-page-route">
-                        <li><a className="home-active">Home</a></li>
-                        <li><a>About</a></li>
-                        <p>
-                            <NavLink
-                                style={{ background: 'unset', textDecoration: 'none', color: 'black' }} to="/interview">Interview</NavLink>
-                        </p>
-                        <li><a>login</a></li>
+                        <li><a href={'/'} className="home-active">Home</a></li>
+                        <li><a href={'#'}>About</a></li>
+                        <li><a href={'/interview'}>Interview</a></li>
+                        <li><a href={'#'}>login</a></li>
                     </ul>
                 </div>
 
@@ -38,7 +35,7 @@ function HomePage() {
                             We can help you conduct coding interviews and test programming skills
                             of developers at scale – turning a challenge into one of your greatest opportunities.
                         </p>
-                        <a>Get started</a>
+                        <a href={'/interview'}>Get started</a>
                     </div>
                     <div className="home-logo-img">
                         <img
