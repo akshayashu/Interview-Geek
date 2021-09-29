@@ -72,6 +72,7 @@ function Editor() {
     const [executionTime, setExecutionTime] = useState("");
     const [jobDetails, setJobDetails] = useState(null);
     const [theme, setTheme] = useState("github");
+    const [isWindowOpen, setWindowOpen] = useState(false);
 
     useEffect(() => {
         const defaultLanguage = localStorage.getItem("default-language") || "cpp";
@@ -83,6 +84,10 @@ function Editor() {
     useEffect(() => {
         setCode(stubs[language]);
     }, [language]);
+
+    function toggle() {
+        setWindowOpen(wasOpened => !wasOpened);
+    }
 
     const setDefaultLanguauge = () => {
         localStorage.setItem("default-language", language);
@@ -251,25 +256,53 @@ function Editor() {
                     setCode(e)
                 }}
             />
-            <div
-                className="editor-submit-btn"
-                onClick={handleSubmit}>
-                <p>Run</p>
-                <div className="arrow-right"></div>
-            </div>
 
-            <div className="editor-output" onLoad={renderTimeDetails()}>
-                <p
-                    style={
-                        status === "success" ? {color: 'green'} 
-                        : status === "error" ? {color: 'red'} 
-                        : {color: 'black'}
-                    }
-                >Status: {status}</p>
-                <p>Job id: {jobId && `${jobId}`}</p>
-                <p>Output: {output}</p>
-                <p>Submitted at: {submissionTime}</p>
-                <p>Execution time: {executionTime}</p>
+            {/* console */}
+            <div className="editor-console">
+                {/* visible window state */}
+                <div className="editor-console-window">
+                    <div
+                        className="editor-console-toggle"
+                        onClick={toggle}>
+                        {
+                            isWindowOpen && (<p><i className="arrow down"></i></p>)
+                        }
+                        {
+                            !isWindowOpen && (<p><i className="arrow up"></i></p>)
+                        }
+
+                        <p>Console</p>
+                    </div>
+                    <div
+                        className="editor-submit-btn"
+                        onClick={handleSubmit}>
+                        <p>Run</p>
+                        <div className="arrow-right"></div>
+                    </div>
+                </div>
+
+                {/* toggling state */}
+                {
+                    isWindowOpen && (
+                        <div onLoad={renderTimeDetails()}>
+                            <p
+                                style={
+                                    status === "success" ? { color: 'green' }
+                                        : status === "error" ? { color: 'red' }
+                                            : { color: 'black' }
+                                }
+                            >Status: {status}</p>
+                            {/* <p>Job id: {jobId && `${jobId}`}</p> */}
+                            <p
+                                style={
+                                    { minHeight: '60px', fontWeight: '700', fontSize: '16px', backgroundColor: 'honeydew' }
+                                }>{output}</p>
+                            <p>Submitted at: {submissionTime}</p>
+                            <p>Execution time: {executionTime}</p>
+                        </div>
+                    )
+                }
+
             </div>
         </div>
     );

@@ -1,4 +1,3 @@
-
 .lang-theme{
     display: flex;
     margin: 5px;
@@ -83,24 +82,60 @@
     cursor: pointer;
 }
 
+.editor-console{
+    position: relative;
+    width: 100%;
+    background: white;
+}
+
+.editor-console-window{
+    width: 100%;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(60, 99, 218, 0.5);
+    border-radius: 10px 10px 0 0;
+}
+
+.editor-console-toggle{
+    display: flex;
+}
+
+.editor-console-toggle p{
+    margin: 4px;
+}
 .editor-submit-btn{
-    position: absolute;
     z-index: 1;
-    right: 0;
-    margin-top: -100px;
     display: flex;
     justify-content: space-between;
     width: 100px;
     background: #1DE9B6; 
     color: '#FFFFFF';
-    padding: 10px;
+    padding: 4px 10px;
     border-radius: 10px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
     margin: 5px;
 }
 
 .editor-submit-btn p{
     color: white;
+}
+
+.arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+}
+.up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+}
+
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
 }
 
 .arrow-right {
@@ -113,13 +148,9 @@
     border-left: 6px solid white;
   }
 
-.editor-output{
-    position: relative;
-    width: 100%;
-    background: white;
-}
-.editor-output p{
+.editor-console p{
     padding: 2px;
+    font-size: 14px;
     white-space: pre-line;
 }
 
