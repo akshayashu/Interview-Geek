@@ -83,4 +83,44 @@
     cursor: pointer;
 }
 
+.editor-submit-btn{
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    margin-top: -100px;
+    display: flex;
+    justify-content: space-between;
+    width: 100px;
+    background: #1DE9B6; 
+    color: '#FFFFFF';
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    margin: 5px;
+}
+
+.editor-submit-btn p{
+    color: white;
+}
+
+.arrow-right {
+    width: 0; 
+    height: 0; 
+    margin-top: 3px;
+    align-self: center;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-left: 6px solid white;
+  }
+
+.editor-output{
+    position: relative;
+    width: 100%;
+    background: white;
+}
+.editor-output p{
+    padding: 2px;
+    white-space: pre-line;
+}
+
 

@@ -21,6 +21,7 @@ import "ace-builds/src-noconflict/theme-textmate";
 import "ace-builds/src-noconflict/theme-terminal";
 import "ace-builds/src-noconflict/theme-solarized_dark";
 import "ace-builds/src-noconflict/theme-solarized_light";
+import { grey } from '@material-ui/core/colors';
 
 const useStyles = makeStyles({
     root: {
@@ -67,6 +68,8 @@ function Editor() {
     const [output, setOutput] = useState("");
     const [status, setStatus] = useState("");
     const [jobId, setJobId] = useState("");
+    const [submissionTime, setSubmissionTime] = useState("");
+    const [executionTime, setExecutionTime] = useState("");
     const [jobDetails, setJobDetails] = useState(null);
     const [theme, setTheme] = useState("github");
 
@@ -89,24 +92,29 @@ function Editor() {
 
     const renderTimeDetails = () => {
         if (!jobDetails) {
-            return "";
+            return;
         }
         let result = "";
         let { submittedAt, completedAt, startedAt } = jobDetails;
 
         startedAt = moment(startedAt).toString();
 
-        result += `Submitted At: ${submittedAt}`;
-
-        if (!completedAt || !startedAt) {
-            return result;
+        result += `Submitted At: ${submittedAt}\n`;
+        if (submissionTime == "") {
+            setSubmissionTime(submittedAt);
         }
+        if (!completedAt || !startedAt) {
+            return;
+        }
+
         const start = moment(submittedAt);
         const end = moment(completedAt);
-        const executionTime = end.diff(start, 'seconds', true);
-
-        result += `  Execution Time: ${executionTime}s`;
-        return result;
+        const executeTime = end.diff(start, 'seconds', true);
+        if (executionTime == "") {
+            setExecutionTime(executeTime + "s");
+        }
+        result += ` Execution Time: ${executeTime}s`;
+        // return result;
     }
     //submitting code
     const handleSubmit = async () => {
@@ -120,6 +128,8 @@ function Editor() {
             setJobId("");
             setStatus("");
             setOutput("");
+            setSubmissionTime("");
+            setExecutionTime("");
             setJobDetails(null);
             const { data } = await axios.post("http://localhost:5000/run", codeData);
             console.log(data);
@@ -138,7 +148,7 @@ function Editor() {
                     });
 
                 const { success, job, error } = dataRes;
-                console.log(dataRes);
+                console.log(dataRes.job);
 
                 if (success) {
                     const { status: jobStatus, output: jobOutput } = job;
@@ -147,7 +157,12 @@ function Editor() {
                     if (jobStatus === "pending") return;
 
                     // got the output whether success or error
-                    setOutput(jobOutput);
+                    if (jobStatus === "success") {
+                        setOutput(jobOutput);
+                    } else {
+                        setOutput(JSON.parse(jobOutput).stderr);
+                    }
+
                     clearInterval(intervalId);
                 } else {
                     setStatus("Error: Please retry!");
@@ -236,17 +251,26 @@ function Editor() {
                     setCode(e)
                 }}
             />
+            <div
+                className="editor-submit-btn"
+                onClick={handleSubmit}>
+                <p>Run</p>
+                <div className="arrow-right"></div>
+            </div>
 
-            <Button
-                onClick={handleSubmit}
-                variant="contained"
-                endIcon={<PlayArrowIcon />}
-                style={{ backgroundColor: '#1DE9B6', color: '#FFFFFF' }}
-            >Submit</Button>
-            <p>{status}</p>
-            <p>{jobId && `JobID: ${jobId}`}</p>
-            <p>{renderTimeDetails()}</p>
-            <p>{output}</p>
+            <div className="editor-output" onLoad={renderTimeDetails()}>
+                <p
+                    style={
+                        status === "success" ? {color: 'green'} 
+                        : status === "error" ? {color: 'red'} 
+                        : {color: 'black'}
+                    }
+                >Status: {status}</p>
+                <p>Job id: {jobId && `${jobId}`}</p>
+                <p>Output: {output}</p>
+                <p>Submitted at: {submissionTime}</p>
+                <p>Execution time: {executionTime}</p>
+            </div>
         </div>
     );
 }
