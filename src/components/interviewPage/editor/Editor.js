@@ -237,10 +237,12 @@ function Editor() {
                     <p>Set as default</p>
                 </div>
             </div>
+            
+            
             <AceEditor
                 className="main-editor"
-                width="50vw"
-                height="70vh"
+                width="100%"
+                height="calc(100vh - 160px)"
                 fontSize="15px"
                 mode={language === "py" ? "python" : "c_cpp"}
                 theme={theme}

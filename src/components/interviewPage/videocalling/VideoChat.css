@@ -1,6 +1,8 @@
-.container{
+.video-container{
     display: flex;
     justify-content: center;
+    /* height: calc(100vh - 2 * 60px); */
+    overflow-y: scroll;
 }
 .primary-video{
     width: 40%;

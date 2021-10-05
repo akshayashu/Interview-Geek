@@ -182,8 +182,8 @@ function VideoChat() {
     }
 
     return (
-        <div>
-            <div className="container" >
+        <div style={{overflowY: 'scroll'}}>
+            <div className="video-container" >
                 <video className="primary-video" autoPlay={true} id="local-video" ref={videoRef}></video>
                 <video className="secondary-video" autoPlay={true} id="remote-video" ref={remoteRef}></video>
             </div>

@@ -16,8 +16,35 @@ function InterviewPage() {
                     <p className="int-user-name-text">Akshay Khanna</p>
                 </div>
             </div>
+            <div style={{
+                marginTop: '70px',
+                height: 'calc(100vh - 60px)',
+                width: '100vw',
+                overflow: 'hidden',
+                display: 'flex',
+                flexDirection: 'row'
+            }}>
 
-            {/* main content */}
+                {/* left-side */}
+                <div style={{ flexBasis: 'calc(100% - 5px)', overflowY:'scroll' }}>
+                    <VideoChat></VideoChat>
+                    <VideoChat></VideoChat>
+                    <VideoChat></VideoChat>
+                </div>
+
+                {/* gutter */}
+                <div style={{ flexBasis: 'calc(10px)' }}>
+
+                </div>
+
+                {/* right-side */}
+                <div style={{ flexBasis: 'calc(100% - 5px)' }}>
+                    <Editor className="int-editor"></Editor>
+                </div>
+
+            </div>
+
+            {/* main content
             <div className="int-App">
                 <div className="int-left-side">
                     <VideoChat></VideoChat>
@@ -26,7 +53,7 @@ function InterviewPage() {
                 <div className="int-right-side">
                     <Editor className="int-editor"></Editor>
                 </div>
-            </div>
+            </div> */}
         </div>
 
     );
