@@ -237,13 +237,13 @@ function Editor() {
                     <p>Set as default</p>
                 </div>
             </div>
-            
-            
+
+
             <AceEditor
                 className="main-editor"
                 width="100%"
-                height="calc(100vh - 160px)"
-                fontSize="15px"
+                height="calc(100vh - 155px)"
+                fontSize="14px"
                 mode={language === "py" ? "python" : "c_cpp"}
                 theme={theme}
                 value={code}
@@ -277,33 +277,35 @@ function Editor() {
                     </div>
                     <div
                         className="editor-submit-btn"
-                        onClick={handleSubmit}>
+                        onClick={() => {
+                            handleSubmit();
+                            setWindowOpen(true);
+                        }}>
                         <p>Run</p>
                         <div className="arrow-right"></div>
                     </div>
                 </div>
 
                 {/* toggling state */}
-                {
-                    isWindowOpen && (
-                        <div onLoad={renderTimeDetails()}>
-                            <p
-                                style={
-                                    status === "success" ? { color: 'green' }
-                                        : status === "error" ? { color: 'red' }
-                                            : { color: 'black' }
-                                }
-                            >Status: {status}</p>
-                            {/* <p>Job id: {jobId && `${jobId}`}</p> */}
-                            <p
-                                style={
-                                    { minHeight: '60px', fontWeight: '700', fontSize: '16px', backgroundColor: 'honeydew' }
-                                }>{output}</p>
-                            <p>Submitted at: {submissionTime}</p>
-                            <p>Execution time: {executionTime}</p>
-                        </div>
-                    )
+                {isWindowOpen &&
+                    <div style={{ marginBottom: '30px' }} onLoad={renderTimeDetails()}>
+                        <p
+                            style={
+                                status === "success" ? { color: 'green' }
+                                    : status === "error" ? { color: 'red' }
+                                        : { color: 'black' }
+                            }
+                        >Status: {status}</p>
+                        {/* <p>Job id: {jobId && `${jobId}`}</p> */}
+                        <p
+                            style={
+                                { maxHeight: '60px', fontWeight: '700', fontSize: '16px', backgroundColor: 'honeydew', overflowY: 'scroll' }
+                            }>{output}</p>
+                        <p>Submitted at: {submissionTime}</p>
+                        <p>Execution time: {executionTime}</p>
+                    </div>
                 }
+
 
             </div>
         </div>
